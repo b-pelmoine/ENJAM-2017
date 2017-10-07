@@ -20,6 +20,11 @@
 					<ChildrenList>
 						<MusicPlaylistContainer Name="Phase 1" ID="{532DAF55-1AF5-437C-97A7-8385C143FF9C}" ShortID="559138896">
 							<PropertyList>
+								<Property Name="PlaybackSpeed" Type="Real64">
+									<ValueList>
+										<Value>0.95</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-12</Value>
@@ -88,44 +93,6 @@
 																<Property Name="FadeOutMode" Type="int16" Value="0"/>
 															</PropertyList>
 															<AudioSourceRef Name="Rec Basse_01" ID="{1F4A5DAE-327A-4F61-9604-A945B5F03DC7}"/>
-														</MusicClip>
-													</ClipList>
-												</MusicTrackSequence>
-											</SequenceList>
-										</MusicTrack>
-										<MusicTrack Name="Rec Kick1_01" ID="{D4AB2AF9-0CF3-4890-98B7-C5F75F8FF490}" ShortID="551519780">
-											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{99A70946-9DB9-4A41-B910-8A1E6ED1A9A0}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Rec Kick1_01" ID="{B2D06331-D179-4441-98FE-0898C8FDBB16}" ShortID="416284636">
-													<Language>SFX</Language>
-													<AudioFile>Rec Kick1_01.wav</AudioFile>
-													<ConvertedFileIDList>
-														<File ID="758573395"/>
-													</ConvertedFileIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{EF0AF98C-B669-454C-BD77-98AE9BBA04B4}">
-													<PropertyList>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
-											<SequenceList>
-												<MusicTrackSequence Name="" ID="{B9071F0D-8F8F-427D-BB3C-4B5EC8FFFC50}">
-													<ClipList>
-														<MusicClip Name="Rec Kick1_01" ID="{73849391-76A7-4935-88FA-1846EDB8CBC3}">
-															<PropertyList>
-																<Property Name="EndTrimOffset" Type="Real64" Value="8181.85416666667"/>
-																<Property Name="FadeInMode" Type="int16" Value="0"/>
-																<Property Name="FadeOutMode" Type="int16" Value="0"/>
-															</PropertyList>
-															<AudioSourceRef Name="Rec Kick1_01" ID="{B2D06331-D179-4441-98FE-0898C8FDBB16}"/>
 														</MusicClip>
 													</ClipList>
 												</MusicTrackSequence>
@@ -2018,6 +1985,11 @@
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Phase 3" ID="{3C0F2BD8-D9F1-43E8-A6EC-37E7D6C69E65}" ShortID="655634364">
 							<PropertyList>
+								<Property Name="PlaybackSpeed" Type="Real64">
+									<ValueList>
+										<Value>1.1</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-12</Value>
@@ -2130,6 +2102,13 @@
 											</SequenceList>
 										</MusicTrack>
 										<MusicTrack Name="Rec Lead_03" ID="{139879FC-B4FD-4FEC-ABA0-A5636425729C}" ShortID="686625776">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{99A70946-9DB9-4A41-B910-8A1E6ED1A9A0}"/>
@@ -2316,6 +2295,13 @@
 											</SequenceList>
 										</MusicTrack>
 										<MusicTrack Name="Rec Lead_03" ID="{D371C009-3DB7-43AA-9B6E-BF385D3412E7}" ShortID="384530813">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{99A70946-9DB9-4A41-B910-8A1E6ED1A9A0}"/>
@@ -2354,6 +2340,13 @@
 											</SequenceList>
 										</MusicTrack>
 										<MusicTrack Name="Rec Gratte 1_02" ID="{9FC99F4F-C823-47E1-988A-3A52137938CA}" ShortID="839606489">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5E5FFA28-2F3D-4581-A306-95CE8D8D30DD}"/>
@@ -2419,6 +2412,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<MusicTrack Name="Rec Lead_03" ID="{D677E079-7296-4544-B765-CF408AEA034E}" ShortID="27343674">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{99A70946-9DB9-4A41-B910-8A1E6ED1A9A0}"/>
@@ -2540,6 +2540,13 @@
 											</SequenceList>
 										</MusicTrack>
 										<MusicTrack Name="Rec Gratte 2_02" ID="{1E335CAF-2F36-4AE2-9F7B-6DC73C425144}" ShortID="138209746">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{99A70946-9DB9-4A41-B910-8A1E6ED1A9A0}"/>
@@ -2685,6 +2692,13 @@
 											</SequenceList>
 										</MusicTrack>
 										<MusicTrack Name="Rec Lead_03" ID="{36F491D5-D8CB-42CE-8738-86BCFA0A6A08}" ShortID="337260643">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{99A70946-9DB9-4A41-B910-8A1E6ED1A9A0}"/>
@@ -2727,7 +2741,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="1"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-7</Value>
+														<Value>-2</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
