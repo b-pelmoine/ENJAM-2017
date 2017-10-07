@@ -8,8 +8,10 @@ public class UIManager : MonoBehaviour {
     private Button startGameButton;
     [SerializeField]
     private GameObject MainMenuRoot;
+    [SerializeField]
+    private GameObject LoadingRoot;
 
-	void Start () {
+    void Start () {
         startGameButton.onClick.AddListener(startGame);
 	}
 	

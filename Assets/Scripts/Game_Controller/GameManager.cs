@@ -39,5 +39,6 @@ public class GameManager : MonoBehaviour {
         SplitScreen.switchState();
         EventManager.TriggerEvent("splitscreen");
         //show screen and start the game for real
+
     }
 }
