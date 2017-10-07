@@ -56,6 +56,16 @@ public class GameManager : MonoBehaviour {
         return players[player].transform.position;
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+            EventManager.TriggerEvent("Dash" + ((Input.GetKey(KeyCode.LeftShift)) ? "J2" : "J1") );
+        if (Input.GetKeyDown(KeyCode.Z))
+            EventManager.TriggerEvent("Shield" + ((Input.GetKey(KeyCode.LeftShift)) ? "J2" : "J1"));
+        if (Input.GetKeyDown(KeyCode.E))
+            EventManager.TriggerEvent("Attack" + ((Input.GetKey(KeyCode.LeftShift)) ? "J2" : "J1"));
+    }
+
     void Awake()
     {
         if (instance == null)
