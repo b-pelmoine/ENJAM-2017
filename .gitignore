@@ -82,6 +82,9 @@ $RECYCLE.BIN/
 
 #Wwise ignore
 */Wwise
+*.akd
+*.cache
+*.meta
 
 #But not these files
 !.wproj

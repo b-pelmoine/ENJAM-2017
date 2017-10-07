@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{65835B41-57EF-472D-93FB-819BB0136141}" SchemaVersion="80">
+	<Switches>
+		<WorkUnit Name="Default Work Unit" ID="{65835B41-57EF-472D-93FB-819BB0136141}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Interactive_Music" ID="{B3661F79-7A49-43EF-8E6B-7712DFB6334A}">
+					<ChildrenList>
+						<Switch Name="Phase_1" ID="{86A9DC25-69CD-43B0-AB28-A72F653349C6}"/>
+						<Switch Name="Phase_2" ID="{6510951E-935C-473C-9EA2-F275A4741AE2}"/>
+						<Switch Name="Phase_3" ID="{9845B8F6-D9B3-4059-80D0-94BEB3198990}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</Switches>
+</WwiseDocument>
