@@ -27,6 +27,12 @@ public class AreaManager : MonoBehaviour {
     float circleStart;
     float circleEnd;
 
+    [Header("Lé jolie param de vitesse pour Vinny")]
+    public float beltSpeed1; 
+    public float beltSpeed2;
+    public float beltSpeed3;
+    public float parallaxIntensity;
+
     void Awake()
     {
         if (instance == null)
@@ -78,11 +84,12 @@ public class AreaManager : MonoBehaviour {
             float scaleOffset = Random.value + .5f;
             ps.transform.localScale *= scaleOffset;
             go.transform.Rotate(Vector3.forward,Random.Range(0, 360));
-            float offset = (Random.value - 0.5f) * epaisseur;
+            float offset = (Random.value) * epaisseur;
             go.transform.position += Vector3.Normalize(go.transform.right) * (circleStart + offset);
             go.transform.parent = (Random.value > .5f) ? beltRootlvl1.transform : (Random.value > .85f) ? beltRootlvl2.transform : beltRootlvl3.transform;
-            Vector3 endPos = Vector3.Normalize(go.transform.position - Vector3.zero) * (circleEnd + offset*1.5f);
+            Vector3 endPos = Vector3.Normalize(go.transform.position - Vector3.zero) * (circleEnd + offset*1.5f) + Vector3.forward * Random.value * parallaxIntensity;
             go.transform.localScale *= scaleOffset;
+            go.transform.position += Vector3.forward * Random.value * parallaxIntensity;
 
             asteroidBelt.Add(go, new KeyValuePair<Vector3, Vector3>(go.transform.position, endPos));
         }
@@ -131,10 +138,10 @@ public class AreaManager : MonoBehaviour {
             }
         }
         beltRootlvl1.transform.rotation = r2;
-        beltRootlvl1.transform.Rotate(Vector3.forward, Time.deltaTime*1.5f);
+        beltRootlvl1.transform.Rotate(Vector3.forward, Time.deltaTime* beltSpeed1);
         beltRootlvl2.transform.rotation = r3;
-        beltRootlvl2.transform.Rotate(Vector3.forward, Time.deltaTime*3f);
+        beltRootlvl2.transform.Rotate(Vector3.forward, Time.deltaTime* beltSpeed2);
         beltRootlvl3.transform.rotation = r4;
-        beltRootlvl3.transform.Rotate(Vector3.forward, Time.deltaTime*10f);
+        beltRootlvl3.transform.Rotate(Vector3.forward, Time.deltaTime* beltSpeed3);
     }
 }

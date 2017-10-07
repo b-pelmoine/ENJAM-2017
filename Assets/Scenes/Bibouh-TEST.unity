@@ -162,22 +162,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkDuration: 30
-  asteroidCircleStart: 30
+  asteroidCircleStart: 20
   asteroidCircleEnd: 80
   astreoidCount: 0
   asteroidMaxCount: 0
-  beltAsteroidCount: 80
+  beltAsteroidCount: 200
   moveSpeed: 0
   maxHP: 0
-  distance: 0
+  dashDistance: 0
   dashSpeed: 0
   dashCooldown: 0
+  shieldCooldown: 0
+  shieldDuration: 0
   maxWidth: 0
   maxLenght: 0
   damagesToEnnemy: 0
   percentageHealthCost: 0
   attackCooldown: 0
   damagesOnCollision: 0
+  speedMultiplierOnCollision: 0
+  speedMultiplierOnSpawn: 0
 --- !u!114 &160091378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +230,10 @@ MonoBehaviour:
     m_NumColorKeys: 6
     m_NumAlphaKeys: 2
   shrinking: 0
+  beltSpeed1: 3
+  beltSpeed2: 8
+  beltSpeed3: 12
+  parallaxIntensity: 50
 --- !u!1 &187098809
 GameObject:
   m_ObjectHideFlags: 0
