@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
     [Header("Players")]
     public float moveSpeed;
     public int maxHP;
+    public Color colorJ1;
+    public Color colorJ2;
 
     [Header("Dash")]
     public float dashDistance;
@@ -42,8 +44,13 @@ public class GameManager : MonoBehaviour {
     public float speedMultiplierOnSpawn;
 
     [Header("Game manager related variables")]
-    private List<GameObject> players;
+    public List<GameObject> players;
     private AreaManager areaGenerator;
+
+    public Vector3 getPlayerPosition(int player)
+    {
+        return players[player].transform.position;
+    }
 
     void Awake()
     {
@@ -51,11 +58,6 @@ public class GameManager : MonoBehaviour {
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
-    }
-
-    void Start()
-    {
-        players = new List<GameObject>();
     }
 
     void OnEnable()

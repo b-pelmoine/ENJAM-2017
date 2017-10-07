@@ -6,7 +6,6 @@ public class StaticAsteroid : MonoBehaviour {
 
     float rotationSpeed = 0.0f;
 
-
     void Awake () {
         List<Sprite> asteroidSprites = AreaManager.instance.asteroidSprites;
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
