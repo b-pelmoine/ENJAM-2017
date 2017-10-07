@@ -79,13 +79,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-#Wwise ignore
-*/Wwise
-
-#But not these files
-!.wproj
-!.wwu
-!/Wwise/Originals
-!/Assets/StreamingAssets
-
