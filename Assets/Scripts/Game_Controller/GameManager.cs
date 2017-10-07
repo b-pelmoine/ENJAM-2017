@@ -4,17 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour {
-	
-	void Update () {
-        if (Input.GetKeyDown("x"))
-        {
-            EventManager.TriggerEvent("splitscreen");
-        }
-        if (Input.GetKeyDown("c"))
-        {
-            SplitScreen.switchState();
-        }
-    }
 
     void OnEnable()
     {
@@ -28,6 +17,7 @@ public class GameManager : MonoBehaviour {
 
     void GameStart()
     {
-        Debug.Log("Game starting !");
+        SplitScreen.switchState();
+        EventManager.TriggerEvent("splitscreen");
     }
 }

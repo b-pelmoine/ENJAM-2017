@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SplitScreen : MonoBehaviour {
 
-    static bool splitEnabled = true;
+    static bool splitEnabled = false;
 
     private enum POSITION{
         LEFT,
@@ -20,7 +20,11 @@ public class SplitScreen : MonoBehaviour {
 	void Start () {
         m_Cam = (Camera) gameObject.GetComponent<Camera>();
         if (!m_Cam) Debug.LogError("Splitscreen : Missing camera object");
-        else m_color = m_Cam.backgroundColor;
+        else
+        {
+            m_color = m_Cam.backgroundColor;
+            m_Cam.enabled = false;
+        }
         switch(m_pos)
         {
             case POSITION.LEFT: { m_Cam.rect = new Rect(0.0f,0.0f,0.5f,1.0f); } break;
@@ -43,8 +47,13 @@ public class SplitScreen : MonoBehaviour {
         SplitScreen.splitEnabled = !splitEnabled;
     }
 
+    public static bool splitState()
+    {
+        return SplitScreen.splitEnabled;
+    }
+
     void triggerState()
     {
-        m_Cam.backgroundColor = (splitEnabled) ? Color.white : m_color;
+        m_Cam.enabled = splitEnabled;
     }
 }
