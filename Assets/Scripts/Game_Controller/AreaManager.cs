@@ -97,13 +97,17 @@ public class AreaManager : MonoBehaviour {
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(Vector3.zero, 5f);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(Vector3.zero, Mathf.Lerp(circleStart, circleEnd, 1 - ((Time.time - startTime) / shrinkDuration)));
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(Vector3.zero, circleStart);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(Vector3.zero, circleEnd);
+    }
+
+    public static float getShrinkRatio() // return current ratio of the shrink occuring
+    {
+        return 1 - ((Time.time - instance.startTime) / instance.shrinkDuration);
     }
 
     void Update()
