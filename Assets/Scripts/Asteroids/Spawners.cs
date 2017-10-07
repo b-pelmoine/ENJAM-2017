@@ -12,24 +12,38 @@ public class Spawners : MonoBehaviour {
     public float randForceYMin = -100.0f;
     public float randForceYMax = 100.0f;
 
-    private float nextRand;
+    private float elapsedTime;
+    private float nextRandTime;
     private float nextRandForceX;
     private float nextRandForceY;
 
 	// Use this for initialization
 	void Start () {
-        nextRand = Random.Range(randTimeMin, randTimeMax);
+        elapsedTime = 0.0f;
+        nextRandTime = Random.Range(randTimeMin, randTimeMax);
+        nextRandForceX = Random.Range(randForceXMin, randForceXMax);
+        nextRandForceY = Random.Range(randForceYMin, randForceYMax);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        elapsedTime += Time.deltaTime;
+        if(elapsedTime >= nextRandTime)
+        {
+            Spawn();
+        }
 	}
 
     private void Spawn()
     {
         GameObject spawned;
         spawned = GameObject.Instantiate(toSpawn);
+        spawned.transform.position = transform.position;
         spawned.GetComponent<Rigidbody2D>().AddForce(new Vector2(nextRandForceX, nextRandForceY));
+
+        elapsedTime = 0.0f;
+        nextRandTime = Random.Range(randTimeMin, randTimeMax);
+        nextRandForceX = Random.Range(randForceXMin, randForceXMax);
+        nextRandForceY = Random.Range(randForceYMin, randForceYMax);
     }
 }
