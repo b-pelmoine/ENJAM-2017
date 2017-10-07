@@ -17,18 +17,21 @@ public class Spawners : MonoBehaviour {
     private float nextRandForceX;
     private float nextRandForceY;
 
+    private GameManager manager;
+
 	// Use this for initialization
 	void Start () {
         elapsedTime = 0.0f;
         nextRandTime = Random.Range(randTimeMin, randTimeMax);
         nextRandForceX = Random.Range(randForceXMin, randForceXMax);
         nextRandForceY = Random.Range(randForceYMin, randForceYMax);
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime >= nextRandTime)
+        if(elapsedTime >= nextRandTime && manager.astreoidCount < manager.asteroidMaxCount)
         {
             Spawn();
         }
@@ -45,5 +48,6 @@ public class Spawners : MonoBehaviour {
         nextRandTime = Random.Range(randTimeMin, randTimeMax);
         nextRandForceX = Random.Range(randForceXMin, randForceXMax);
         nextRandForceY = Random.Range(randForceYMin, randForceYMax);
+        manager.astreoidCount++;
     }
 }
