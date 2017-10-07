@@ -17,6 +17,21 @@ public class PlayerController : MonoBehaviour {
     private int health;
     private Rigidbody2D rig;
     private Vector3 _origPos;
+    private float dashSpeed;
+    private float dashDistance;
+    private float dashCooldown;
+    private Vector2 savedVelocity;
+    private DashState dashState;
+    private float dashTime;
+    private float dashCD;
+    private bool dashing;
+
+    public enum DashState
+    {
+        Ready,
+        Dashing,
+        Cooldown
+    }
 
     private void Start()
     {
@@ -25,6 +40,19 @@ public class PlayerController : MonoBehaviour {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         health = gameManager.maxHP;
         speed = gameManager.moveSpeed;
+        dashDistance = gameManager.dashDistance;
+        dashSpeed = gameManager.dashSpeed;
+        dashCooldown = gameManager.dashCooldown;
+        dashState = DashState.Ready;
+        dashTime = 0.0f;
+        dashCD = dashCooldown;
+        dashing = false;
+
+    }
+
+    private void Update()
+    {
+        Dash(dashSpeed, dashDistance, dashCooldown);
     }
 
     void FixedUpdate()
@@ -33,7 +61,14 @@ public class PlayerController : MonoBehaviour {
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        rig.velocity = movement * speed;
+        if (dashing)
+        {
+            rig.velocity = movement * speed * dashSpeed;
+        }
+        else
+        {
+            rig.velocity = movement * speed;
+        }
 
         rig.position = new Vector2
         (
@@ -61,5 +96,40 @@ public class PlayerController : MonoBehaviour {
     {
         //play anim death etc
         Debug.Log("Mort");
+    }
+
+    private void Dash(float speed, float distance, float cooldown)
+    {
+        switch (dashState)
+        {
+            case DashState.Ready:
+                var isDashKeyDown = Input.GetButtonDown("Dash");
+                if (isDashKeyDown)
+                {
+                    Debug.Log("dash");
+                    dashing = true;
+                    dashState = DashState.Dashing;
+                }
+                break;
+            case DashState.Dashing:
+                dashTime += Time.deltaTime * 3.0f;
+                if (dashTime >= distance)
+                {
+                    Debug.Log("dashing");
+                    dashTime = 0.0f;
+                    dashing = false;
+                    dashState = DashState.Cooldown;
+                }
+                break;
+            case DashState.Cooldown:
+                dashCD -= Time.deltaTime;
+                if (dashCD <= 0)
+                {
+                    Debug.Log("dashCD");
+                    dashCD = dashCooldown;
+                    dashState = DashState.Ready;
+                }
+                break;
+        }
     }
 }

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
     public int maxHP;
 
     [Header("Dash")]
-    public float distance;
+    public float dashDistance;
     public float dashSpeed;
     public float dashCooldown;
 
