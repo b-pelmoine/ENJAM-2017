@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     private float speed;
     public Boundary boundary;
     public GameObject shield;
+    public ParticleSystem dashParticles;
 
     private GameManager gameManager;
     private int health;
@@ -170,6 +171,7 @@ public class PlayerController : MonoBehaviour {
                         {
                             dashing = true;
                             dashState = DashState.Dashing;
+                            dashParticles.Play();
                         }
                         break;
                     case PlayerState.PlayerTwo:
@@ -178,6 +180,7 @@ public class PlayerController : MonoBehaviour {
                         {
                             dashing = true;
                             dashState = DashState.Dashing;
+                            dashParticles.Play();
                         }
                         break;
                 }
