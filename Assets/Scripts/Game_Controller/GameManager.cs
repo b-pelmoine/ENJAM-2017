@@ -43,8 +43,12 @@ public class GameManager : MonoBehaviour {
     public float speedMultiplierOnCollision;
     public float speedMultiplierOnSpawn;
 
+    [Header("CirclePop")]
+    public float circleDuration = 1.5f;
+
     [Header("Game manager related variables")]
     public List<GameObject> players;
+    public List<GameObject> ShowPlayers;
     private AreaManager areaGenerator;
 
     public Vector3 getPlayerPosition(int player)
@@ -63,11 +67,13 @@ public class GameManager : MonoBehaviour {
     void OnEnable()
     {
         EventManager.StartListening("start", GameStart);
+        EventManager.StartListening("shrinkEnded", OnShrinkEnded);
     }
 
     void OnDisable()
     {
         EventManager.StopListening("start", GameStart);
+        EventManager.StopListening("shrinkEnded", OnShrinkEnded);
     }
 
     void GameStart()
@@ -80,5 +86,15 @@ public class GameManager : MonoBehaviour {
         EventManager.TriggerEvent("splitscreen");
         //show screen and start the game for real
         EventManager.TriggerEvent("gameStart");
+    }
+
+    void OnShrinkEnded()
+    {
+        for(int i=0; i<players.Count; ++i)
+        {
+            GameObject go = Instantiate(ShowPlayers[i]);
+            go.transform.localScale = Vector3.one * 20;
+            go.transform.position = players[i].transform.position;
+        }
     }
 }

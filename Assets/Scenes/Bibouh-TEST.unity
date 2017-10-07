@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad8afec611a0c54c81724a202f5c15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrinkDuration: 5
+  shrinkDuration: 1
   asteroidCircleStart: 20
   asteroidCircleEnd: 80
   astreoidCount: 0
@@ -184,9 +184,13 @@ MonoBehaviour:
   damagesOnCollision: 0
   speedMultiplierOnCollision: 0
   speedMultiplierOnSpawn: 0
+  circleDuration: 0.75
   players:
   - {fileID: 330144684}
   - {fileID: 919158965}
+  ShowPlayers:
+  - {fileID: 1408599332881722, guid: 2ad8a145e0f62a249ace474317733e00, type: 2}
+  - {fileID: 1682388840944942, guid: 5eb03c305fb4d654eb561292f9441459, type: 2}
 --- !u!114 &160091378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +242,7 @@ MonoBehaviour:
   beltSpeed1: 3
   beltSpeed2: 8
   beltSpeed3: 12
-  parallaxIntensity: 50
+  parallaxIntensity: 10
 --- !u!1 &187098809
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +334,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 187098809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.3, y: 20.5, z: -10}
+  m_LocalPosition: {x: -5.6, y: 2.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 330144685}
@@ -459,7 +463,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 248414644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 61.5, y: 24.4, z: -10}
+  m_LocalPosition: {x: 12.99, y: -6.58, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 919158966}
@@ -985,7 +989,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741712933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1002,8 +1006,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc78383e7980b24f93aa8980c5da5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cam: {fileID: 0}
-  line: {fileID: 120209662077274822, guid: db103701847194e4ca59c54375db9939, type: 2}
 --- !u!1 &777295853
 GameObject:
   m_ObjectHideFlags: 0
