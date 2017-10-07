@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212194187424217808}
   - component: {fileID: 50323143920710856}
   - component: {fileID: 114618272039838500}
+  - component: {fileID: 58811690980616232}
   m_Layer: 0
   m_Name: FlyingAsteroid
-  m_TagString: Untagged
+  m_TagString: FlyingAsteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +124,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58811690980616232
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020634653269792}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 47312ffee8663704e81ad79cca6456b3, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5600002
 --- !u!96 &96269434429547326
 TrailRenderer:
   serializedVersion: 2
@@ -225,7 +241,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85737774fd6b309419c02ada520d9cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 3
+  asteroidPrefab: {fileID: 1020634653269792}
+  spawnTime: 2
+  randForceXMin: -100
+  randForceXMax: 100
+  randForceYMin: -100
+  randForceYMax: 100
 --- !u!198 &198923069778712708
 ParticleSystem:
   m_ObjectHideFlags: 1

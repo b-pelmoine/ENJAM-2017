@@ -12,10 +12,10 @@ public class UIManager : MonoBehaviour {
     private GameObject LoadingRoot;
 
     void Start () {
-        startGameButton.onClick.AddListener(startGame);
+        startGameButton.onClick.AddListener(StartGame);
 	}
 	
-	void startGame()
+	void StartGame()
     {
         EventManager.TriggerEvent("start");
         MainMenuRoot.SetActive(false);
