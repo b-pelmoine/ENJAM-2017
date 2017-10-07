@@ -62,8 +62,8 @@ public class AreaManager : MonoBehaviour {
     void generate()
     {
         GameManager instance = GameManager.instance;
-        float circleStart = instance.asteroidCircleStart;
-        float circleEnd = instance.asteroidCircleEnd;
+        circleStart = instance.asteroidCircleStart;
+        circleEnd = instance.asteroidCircleEnd;
         shrinkDuration = instance.shrinkDuration;
         int count = instance.beltAsteroidCount;
 
@@ -93,6 +93,17 @@ public class AreaManager : MonoBehaviour {
         startTime = Time.time;
         endTime = startTime + shrinkDuration;
         shrinking = true;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(Vector3.zero, 5f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(Vector3.zero, Mathf.Lerp(circleStart, circleEnd, 1 - ((Time.time - startTime) / shrinkDuration)));
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(Vector3.zero, circleStart);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(Vector3.zero, circleEnd);
     }
 
     void Update()
