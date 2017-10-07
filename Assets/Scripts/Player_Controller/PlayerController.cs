@@ -12,24 +12,42 @@ public class PlayerController : MonoBehaviour {
 
     private float speed;
     public Boundary boundary;
+    public GameObject shield;
 
     private GameManager gameManager;
     private int health;
     private Rigidbody2D rig;
     private Vector3 _origPos;
+    private Vector2 savedVelocity;
+
+    //Dash variables
+    private DashState dashState;
     private float dashSpeed;
     private float dashDistance;
     private float dashCooldown;
-    private Vector2 savedVelocity;
-    private DashState dashState;
     private float dashTime;
     private float dashCD;
     private bool dashing;
+    
+    //Shield variables
+    private ShieldState shieldState;
+    private float shieldDuration;
+    private float shieldTime;
+    private float shieldCooldown;
+    private float shieldCD;
+    private bool isShielding;
 
     public enum DashState
     {
         Ready,
         Dashing,
+        Cooldown
+    }
+
+    public enum ShieldState
+    {
+        Ready,
+        Shielding,
         Cooldown
     }
 
@@ -40,6 +58,7 @@ public class PlayerController : MonoBehaviour {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         health = gameManager.maxHP;
         speed = gameManager.moveSpeed;
+
         dashDistance = gameManager.dashDistance;
         dashSpeed = gameManager.dashSpeed;
         dashCooldown = gameManager.dashCooldown;
@@ -48,11 +67,28 @@ public class PlayerController : MonoBehaviour {
         dashCD = dashCooldown;
         dashing = false;
 
+        shieldState = ShieldState.Ready;
+        shieldDuration = gameManager.shieldDuration;
+        shieldCooldown = gameManager.shieldCooldown;
+        shieldCD = shieldCooldown;
+        shieldTime = 0.0f;
+        isShielding = false;
+
     }
 
     private void Update()
     {
-        Dash(dashSpeed, dashDistance, dashCooldown);
+        Dash();
+        Shield();
+
+        Vector3 moveDirection = gameObject.transform.position - _origPos;
+        if (moveDirection != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        _origPos = transform.position;
     }
 
     void FixedUpdate()
@@ -76,20 +112,15 @@ public class PlayerController : MonoBehaviour {
             Mathf.Clamp(rig.position.y, boundary.yMin, boundary.yMax)
         );
 
-        Vector3 moveDirection = gameObject.transform.position - _origPos;
-        if (moveDirection != Vector3.zero)
-        {
-            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-
-        _origPos = transform.position;
     }
 
     public void DamagePlayer(int damages)
     {
-        health -= damages;
-        if (health <= 0) Kill();
+        if (!isShielding)
+        {
+            health -= damages;
+            if (health <= 0) Kill();
+        }
     }
 
     private void Kill()
@@ -98,7 +129,7 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("Mort");
     }
 
-    private void Dash(float speed, float distance, float cooldown)
+    private void Dash()
     {
         switch (dashState)
         {
@@ -106,16 +137,14 @@ public class PlayerController : MonoBehaviour {
                 var isDashKeyDown = Input.GetButtonDown("Dash");
                 if (isDashKeyDown)
                 {
-                    Debug.Log("dash");
                     dashing = true;
                     dashState = DashState.Dashing;
                 }
                 break;
             case DashState.Dashing:
                 dashTime += Time.deltaTime * 3.0f;
-                if (dashTime >= distance)
+                if (dashTime >= dashDistance)
                 {
-                    Debug.Log("dashing");
                     dashTime = 0.0f;
                     dashing = false;
                     dashState = DashState.Cooldown;
@@ -125,9 +154,42 @@ public class PlayerController : MonoBehaviour {
                 dashCD -= Time.deltaTime;
                 if (dashCD <= 0)
                 {
-                    Debug.Log("dashCD");
                     dashCD = dashCooldown;
                     dashState = DashState.Ready;
+                }
+                break;
+        }
+    }
+
+    private void Shield()
+    {
+        switch(shieldState)
+        {
+            case ShieldState.Ready:
+                var isShieldKeyDown = Input.GetButtonDown("Shield");
+                if (isShieldKeyDown)
+                {
+                    isShielding = true;
+                    shieldState = ShieldState.Shielding;
+                    shield.SetActive(true);
+                }
+                break;
+            case ShieldState.Shielding:
+                shieldTime += Time.deltaTime;
+                if(shieldTime >= shieldDuration)
+                {
+                    shieldTime = 0.0f;
+                    isShielding = false;
+                    shieldState = ShieldState.Cooldown;
+                    shield.SetActive(false);
+                }
+                break;
+            case ShieldState.Cooldown:
+                shieldCD -= Time.deltaTime;
+                if (shieldCD <= 0)
+                {
+                    shieldCD = shieldCooldown;
+                    shieldState = ShieldState.Ready;
                 }
                 break;
         }
