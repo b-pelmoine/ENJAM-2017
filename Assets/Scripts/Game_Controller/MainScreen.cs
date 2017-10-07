@@ -7,9 +7,9 @@ public class MainScreen : MonoBehaviour {
 
     private Camera m_Cam;
 
-    void awake()
+    void Awake()
     {
-        m_Cam = GetComponent<Camera>();
+        m_Cam = gameObject.GetComponent<Camera>();
     }
 
     void OnEnable()
@@ -25,5 +25,9 @@ public class MainScreen : MonoBehaviour {
     void triggerState()
     {
         m_Cam.enabled = !SplitScreen.splitState();
+        if (!SplitScreen.splitState())
+        {
+            //cry in a corner
+        }
     }
 }
