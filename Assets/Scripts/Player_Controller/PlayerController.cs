@@ -277,4 +277,15 @@ public class PlayerController : MonoBehaviour {
                 break;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ContactPoint2D contact = collision.contacts[0];
+        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        Vector3 pos = contact.point;
+        GameObject boom = GameObject.Instantiate(collisionAnim);
+        boom.transform.position = pos;
+        boom.transform.rotation = rot;
+        boom.GetComponent<Animator>().SetTrigger("StartHit*");
+    }
 }
