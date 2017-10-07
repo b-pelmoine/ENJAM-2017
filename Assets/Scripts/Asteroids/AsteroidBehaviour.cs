@@ -63,18 +63,31 @@ public class AsteroidBehaviour : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("FlyingAsteroid") && timeCounter > spawnTime)
         {
-            if(state < 3 && manager.astreoidCount < manager.asteroidMaxCount)
+            if(state < 3)
             {
-                GameObject sonOne = GameObject.Instantiate(asteroidPrefab);
-                GameObject sonTwo = GameObject.Instantiate(asteroidPrefab);
-                sonOne.transform.position = transform.position;
-                sonTwo.transform.position = transform.position;
-                sonOne.GetComponent<AsteroidBehaviour>().Decrease(state);
-                sonTwo.GetComponent<AsteroidBehaviour>().Decrease(state);
-                manager.astreoidCount++;
+                if (manager.astreoidCount < manager.asteroidMaxCount)
+                {
+                    GameObject sonOne = GameObject.Instantiate(asteroidPrefab);
+                    GameObject sonTwo = GameObject.Instantiate(asteroidPrefab);
+                    sonOne.transform.position = transform.position;
+                    sonTwo.transform.position = transform.position;
+                    sonOne.GetComponent<AsteroidBehaviour>().Decrease(state);
+                    sonTwo.GetComponent<AsteroidBehaviour>().Decrease(state);
+                    manager.astreoidCount++;
 
-                //Particle system collision
-                Destroy(gameObject);
+                    //Particle system collision
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    GameObject sonOne = GameObject.Instantiate(asteroidPrefab);
+                    sonOne.transform.position = transform.position;
+                    sonOne.GetComponent<AsteroidBehaviour>().Decrease(state);
+
+                    //Particle system collision
+                    Destroy(gameObject);
+                }
+                
             }
             else
             {

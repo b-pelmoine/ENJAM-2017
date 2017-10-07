@@ -11,7 +11,6 @@ public class Boundary
 public class PlayerController : MonoBehaviour {
 
     private float speed;
-    //public float tilt;
     public Boundary boundary;
 
     private GameManager gameManager;
@@ -48,7 +47,6 @@ public class PlayerController : MonoBehaviour {
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-        //rig.rotation = rig.velocity.x * -tilt;
 
         _origPos = transform.position;
     }
