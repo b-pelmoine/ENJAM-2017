@@ -53,6 +53,15 @@ public class PlayerController : MonoBehaviour {
     private void Update()
     {
         Dash(dashSpeed, dashDistance, dashCooldown);
+
+        Vector3 moveDirection = gameObject.transform.position - _origPos;
+        if (moveDirection != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        _origPos = transform.position;
     }
 
     void FixedUpdate()
@@ -76,14 +85,6 @@ public class PlayerController : MonoBehaviour {
             Mathf.Clamp(rig.position.y, boundary.yMin, boundary.yMax)
         );
 
-        Vector3 moveDirection = gameObject.transform.position - _origPos;
-        if (moveDirection != Vector3.zero)
-        {
-            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-
-        _origPos = transform.position;
     }
 
     public void DamagePlayer(int damages)

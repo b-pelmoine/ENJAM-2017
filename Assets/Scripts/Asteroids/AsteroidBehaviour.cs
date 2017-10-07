@@ -106,6 +106,6 @@ public class AsteroidBehaviour : MonoBehaviour {
     
     public void Impulse()
     {
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(nextRandForceX*speedCollision, nextRandForceY*speedCollision));
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(nextRandForceX*speedCollision*30000, nextRandForceY*speedCollision*30000));
     }
 }
