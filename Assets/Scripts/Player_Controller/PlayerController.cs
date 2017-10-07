@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     private float speed;
     public Boundary boundary;
     public GameObject shield;
+    public ParticleSystem dashParticles;
 
     private GameManager gameManager;
     private int health;
@@ -22,7 +23,11 @@ public class PlayerController : MonoBehaviour {
     private Vector3 _origPos;
     private Vector2 savedVelocity;
 
+    public GameObject collisionAnim;
+
     //Dash variables
+    public GameObject dashAnim;
+    public Transform dashAnimPos;
     private DashState dashState;
     private float dashSpeed;
     private float dashDistance;
@@ -30,8 +35,9 @@ public class PlayerController : MonoBehaviour {
     private float dashTime;
     private float dashCD;
     private bool dashing;
-    
+
     //Shield variables
+    public GameObject shieldAnim;
     private ShieldState shieldState;
     private float shieldDuration;
     private float shieldTime;
@@ -142,6 +148,11 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    public float GetHealth()
+    {
+        return health / gameManager.maxHP;
+    }
+
     public void DamagePlayer(int damages)
     {
         if (!isShielding)
@@ -170,6 +181,12 @@ public class PlayerController : MonoBehaviour {
                         {
                             dashing = true;
                             dashState = DashState.Dashing;
+                            //dashParticles.Play();
+                            GameObject dashInstance = GameObject.Instantiate(dashAnim);
+                            dashInstance.transform.position = dashAnimPos.position;
+                            dashInstance.transform.rotation = transform.rotation;
+                            dashInstance.GetComponent<Animator>().SetTrigger("StartDash");
+                            EventManager.TriggerEvent("DashJ1");
                         }
                         break;
                     case PlayerState.PlayerTwo:
@@ -178,6 +195,12 @@ public class PlayerController : MonoBehaviour {
                         {
                             dashing = true;
                             dashState = DashState.Dashing;
+                            //dashParticles.Play();
+                            GameObject dashInstance = GameObject.Instantiate(dashAnim);
+                            dashInstance.transform.position = dashAnimPos.position;
+                            dashInstance.transform.rotation = transform.rotation;
+                            dashInstance.GetComponent<Animator>().SetTrigger("StartDash");
+                            EventManager.TriggerEvent("DashJ2");
                         }
                         break;
                 }
@@ -189,6 +212,7 @@ public class PlayerController : MonoBehaviour {
                     dashTime = 0.0f;
                     dashing = false;
                     dashState = DashState.Cooldown;
+                    Destroy(GameObject.Find("DashAnim(Clone)"));
                 }
                 break;
             case DashState.Cooldown:
@@ -216,6 +240,8 @@ public class PlayerController : MonoBehaviour {
                             isShielding = true;
                             shieldState = ShieldState.Shielding;
                             shield.SetActive(true);
+                            shieldAnim.GetComponent<Animator>().SetTrigger("StartShield");
+                            EventManager.TriggerEvent("ShieldJ1");
                         }
                         break;
                     case PlayerState.PlayerTwo:
@@ -225,6 +251,8 @@ public class PlayerController : MonoBehaviour {
                             isShielding = true;
                             shieldState = ShieldState.Shielding;
                             shield.SetActive(true);
+                            shieldAnim.GetComponent<Animator>().SetTrigger("StartShield");
+                            EventManager.TriggerEvent("ShieldJ2");
                         }
                         break;
                 }
@@ -248,5 +276,16 @@ public class PlayerController : MonoBehaviour {
                 }
                 break;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ContactPoint2D contact = collision.contacts[0];
+        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        Vector3 pos = contact.point;
+        GameObject boom = GameObject.Instantiate(collisionAnim);
+        boom.transform.position = pos;
+        boom.transform.rotation = rot;
+        boom.GetComponent<Animator>().SetTrigger("StartHit*");
     }
 }
