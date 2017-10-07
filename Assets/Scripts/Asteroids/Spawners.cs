@@ -44,7 +44,7 @@ public class Spawners : MonoBehaviour {
         GameObject spawned;
         spawned = GameObject.Instantiate(toSpawn);
         spawned.transform.position = transform.position;
-        spawned.GetComponent<Rigidbody2D>().AddForce(new Vector2(nextRandForceX*speedSpawn, nextRandForceY*speedSpawn));
+        spawned.GetComponent<Rigidbody2D>().AddForce(new Vector2(nextRandForceX*speedSpawn*30000, nextRandForceY*speedSpawn*30000));
 
         elapsedTime = 0.0f;
         nextRandTime = Random.Range(randTimeMin, randTimeMax);
