@@ -10,6 +10,8 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour {
 
+    private PlayerState playerState;
+
     private float speed;
     public Boundary boundary;
     public GameObject shield;
@@ -21,7 +23,8 @@ public class PlayerController : MonoBehaviour {
     private Vector2 savedVelocity;
 
     //Dash variables
-    private DashState dashState;
+    private DashState dashStateOne;
+    private DashState dashStateTwo;
     private float dashSpeed;
     private float dashDistance;
     private float dashCooldown;
@@ -30,7 +33,8 @@ public class PlayerController : MonoBehaviour {
     private bool dashing;
     
     //Shield variables
-    private ShieldState shieldState;
+    private ShieldState shieldStateOne;
+    private ShieldState shieldStateTwo;
     private float shieldDuration;
     private float shieldTime;
     private float shieldCooldown;
@@ -51,8 +55,23 @@ public class PlayerController : MonoBehaviour {
         Cooldown
     }
 
+    public enum PlayerState
+    {
+        PlayerOne,
+        PlayerTwo
+    }
+
     private void Start()
     {
+        if(gameObject.name == "Player1")
+        {
+            playerState = PlayerState.PlayerOne;
+        }
+        else
+        {
+            playerState = PlayerState.PlayerTwo;
+        }
+
         rig = GetComponent<Rigidbody2D>();
         _origPos = transform.position;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -62,12 +81,14 @@ public class PlayerController : MonoBehaviour {
         dashDistance = gameManager.dashDistance;
         dashSpeed = gameManager.dashSpeed;
         dashCooldown = gameManager.dashCooldown;
-        dashState = DashState.Ready;
+        dashStateOne = DashState.Ready;
+        dashStateTwo = DashState.Ready;
         dashTime = 0.0f;
         dashCD = dashCooldown;
         dashing = false;
 
-        shieldState = ShieldState.Ready;
+        shieldStateOne = ShieldState.Ready;
+        shieldStateTwo = ShieldState.Ready;
         shieldDuration = gameManager.shieldDuration;
         shieldCooldown = gameManager.shieldCooldown;
         shieldCD = shieldCooldown;
@@ -93,8 +114,19 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = 0.0f;
+        float moveVertical = 0.0f;
+        switch (playerState)
+        {
+            case PlayerState.PlayerOne:
+                moveHorizontal = Input.GetAxis("Horizontal");
+                moveVertical = Input.GetAxis("Vertical");
+                break;
+            case PlayerState.PlayerTwo:
+                moveHorizontal = Input.GetAxis("Horizontal2");
+                moveVertical = Input.GetAxis("Vertical2");
+                break;
+        }
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         if (dashing)
@@ -131,31 +163,66 @@ public class PlayerController : MonoBehaviour {
 
     private void Dash()
     {
-        switch (dashState)
+        switch (playerState)
         {
-            case DashState.Ready:
-                var isDashKeyDown = Input.GetButtonDown("Dash");
-                if (isDashKeyDown)
+            case PlayerState.PlayerOne:
+                switch (dashStateOne)
                 {
-                    dashing = true;
-                    dashState = DashState.Dashing;
+                    case DashState.Ready:
+                        var isDashOneKeyDown = Input.GetButtonDown("Dash");
+                        if (isDashOneKeyDown)
+                        {
+                            dashing = true;
+                            dashStateOne = DashState.Dashing;
+                        }
+                        break;
+                    case DashState.Dashing:
+                        dashTime += Time.deltaTime * 3.0f;
+                        if (dashTime >= dashDistance)
+                        {
+                            dashTime = 0.0f;
+                            dashing = false;
+                            dashStateOne = DashState.Cooldown;
+                        }
+                        break;
+                    case DashState.Cooldown:
+                        dashCD -= Time.deltaTime;
+                        if (dashCD <= 0)
+                        {
+                            dashCD = dashCooldown;
+                            dashStateOne = DashState.Ready;
+                        }
+                        break;
                 }
                 break;
-            case DashState.Dashing:
-                dashTime += Time.deltaTime * 3.0f;
-                if (dashTime >= dashDistance)
+            case PlayerState.PlayerTwo:
+                switch (dashStateTwo)
                 {
-                    dashTime = 0.0f;
-                    dashing = false;
-                    dashState = DashState.Cooldown;
-                }
-                break;
-            case DashState.Cooldown:
-                dashCD -= Time.deltaTime;
-                if (dashCD <= 0)
-                {
-                    dashCD = dashCooldown;
-                    dashState = DashState.Ready;
+                    case DashState.Ready:
+                        var isDashTwoKeyDown = Input.GetButtonDown("Dash2");
+                        if (isDashTwoKeyDown)
+                        {
+                            dashing = true;
+                            dashStateTwo = DashState.Dashing;
+                        }
+                        break;
+                    case DashState.Dashing:
+                        dashTime += Time.deltaTime * 3.0f;
+                        if (dashTime >= dashDistance)
+                        {
+                            dashTime = 0.0f;
+                            dashing = false;
+                            dashStateTwo = DashState.Cooldown;
+                        }
+                        break;
+                    case DashState.Cooldown:
+                        dashCD -= Time.deltaTime;
+                        if (dashCD <= 0)
+                        {
+                            dashCD = dashCooldown;
+                            dashStateTwo = DashState.Ready;
+                        }
+                        break;
                 }
                 break;
         }
@@ -163,33 +230,70 @@ public class PlayerController : MonoBehaviour {
 
     private void Shield()
     {
-        switch(shieldState)
+        switch (playerState)
         {
-            case ShieldState.Ready:
-                var isShieldKeyDown = Input.GetButtonDown("Shield");
-                if (isShieldKeyDown)
+            case PlayerState.PlayerOne:
+                switch (shieldStateOne)
                 {
-                    isShielding = true;
-                    shieldState = ShieldState.Shielding;
-                    shield.SetActive(true);
+                    case ShieldState.Ready:
+                        var isShieldOneKeyDown = Input.GetButtonDown("Shield");
+                        if (isShieldOneKeyDown)
+                        {
+                            isShielding = true;
+                            shieldStateOne = ShieldState.Shielding;
+                            shield.SetActive(true);
+                        }
+                        break;
+                    case ShieldState.Shielding:
+                        shieldTime += Time.deltaTime;
+                        if (shieldTime >= shieldDuration)
+                        {
+                            shieldTime = 0.0f;
+                            isShielding = false;
+                            shieldStateOne = ShieldState.Cooldown;
+                            shield.SetActive(false);
+                        }
+                        break;
+                    case ShieldState.Cooldown:
+                        shieldCD -= Time.deltaTime;
+                        if (shieldCD <= 0)
+                        {
+                            shieldCD = shieldCooldown;
+                            shieldStateOne = ShieldState.Ready;
+                        }
+                        break;
                 }
                 break;
-            case ShieldState.Shielding:
-                shieldTime += Time.deltaTime;
-                if(shieldTime >= shieldDuration)
+            case PlayerState.PlayerTwo:
+                switch (shieldStateTwo)
                 {
-                    shieldTime = 0.0f;
-                    isShielding = false;
-                    shieldState = ShieldState.Cooldown;
-                    shield.SetActive(false);
-                }
-                break;
-            case ShieldState.Cooldown:
-                shieldCD -= Time.deltaTime;
-                if (shieldCD <= 0)
-                {
-                    shieldCD = shieldCooldown;
-                    shieldState = ShieldState.Ready;
+                    case ShieldState.Ready:
+                        var isShieldTwoKeyDown = Input.GetButtonDown("Shield2");
+                        if (isShieldTwoKeyDown)
+                        {
+                            isShielding = true;
+                            shieldStateTwo = ShieldState.Shielding;
+                            shield.SetActive(true);
+                        }
+                        break;
+                    case ShieldState.Shielding:
+                        shieldTime += Time.deltaTime;
+                        if (shieldTime >= shieldDuration)
+                        {
+                            shieldTime = 0.0f;
+                            isShielding = false;
+                            shieldStateTwo = ShieldState.Cooldown;
+                            shield.SetActive(false);
+                        }
+                        break;
+                    case ShieldState.Cooldown:
+                        shieldCD -= Time.deltaTime;
+                        if (shieldCD <= 0)
+                        {
+                            shieldCD = shieldCooldown;
+                            shieldStateTwo = ShieldState.Ready;
+                        }
+                        break;
                 }
                 break;
         }
