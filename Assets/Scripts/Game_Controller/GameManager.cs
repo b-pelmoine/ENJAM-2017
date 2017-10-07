@@ -13,6 +13,25 @@ public class GameManager : MonoBehaviour {
     public int astreoidCount;
     public int asteroidMaxCount;
 
+    [Header("Players")]
+    public float moveSpeed;
+    public int maxHP;
+
+    [Header("Dash")]
+    public float distance;
+    public float dashSpeed;
+    public float dashCooldown;
+
+    [Header("Attack")]
+    public float maxWidth;
+    public float maxLenght;
+    public int damagesToEnnemy;
+    public float percentageHealthCost;
+    public float attackCooldown;
+
+    [Header("Asteroids")]
+    public int damagesOnCollision;
+
     [Header("Game manager related variables")]
     private List<GameObject> players;
 

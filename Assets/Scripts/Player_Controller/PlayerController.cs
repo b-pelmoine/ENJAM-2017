@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     //public float tilt;
     public Boundary boundary;
 
+    private GameManager gameManager;
+    private int health;
     private Rigidbody2D rig;
     private Vector3 _origPos;
 
@@ -21,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     {
         rig = GetComponent<Rigidbody2D>();
         _origPos = transform.position;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        health = gameManager.maxHP;
     }
 
     void FixedUpdate()
