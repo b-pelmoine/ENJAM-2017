@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour {
     public float dashSpeed;
     public float dashCooldown;
 
+    [Header("Shield")]
+    public float shieldCooldown;
+    public float shieldDuration;
+
     [Header("Attack")]
     public float maxWidth;
     public float maxLenght;
@@ -31,6 +35,8 @@ public class GameManager : MonoBehaviour {
 
     [Header("Asteroids")]
     public int damagesOnCollision;
+    public float speedMultiplierOnCollision;
+    public float speedMultiplierOnSpawn;
 
     [Header("Game manager related variables")]
     private List<GameObject> players;

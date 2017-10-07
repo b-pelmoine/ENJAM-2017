@@ -867,6 +867,21 @@ MonoBehaviour:
   asteroidCircleEnd: 0
   astreoidCount: 0
   asteroidMaxCount: 10
+  moveSpeed: 10
+  maxHP: 100
+  distance: 0
+  dashSpeed: 0
+  dashCooldown: 0
+  shieldCooldown: 0
+  shieldDuration: 0
+  maxWidth: 0
+  maxLenght: 0
+  damagesToEnnemy: 0
+  percentageHealthCost: 0
+  attackCooldown: 0
+  damagesOnCollision: 1
+  speedMultiplierOnCollision: 1
+  speedMultiplierOnSpawn: 1
 --- !u!4 &905364334
 Transform:
   m_ObjectHideFlags: 0
@@ -894,7 +909,7 @@ GameObject:
   - component: {fileID: 944872386}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1001,7 +1016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d4b28bc6b1d4042990affda83372e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   boundary:
     xMin: -8.4
     xMax: 8.4

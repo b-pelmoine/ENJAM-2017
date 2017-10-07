@@ -16,16 +16,18 @@ public class Spawners : MonoBehaviour {
     private float nextRandTime;
     private float nextRandForceX;
     private float nextRandForceY;
+    private float speedSpawn;
 
     private GameManager manager;
 
 	// Use this for initialization
 	void Start () {
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         elapsedTime = 0.0f;
         nextRandTime = Random.Range(randTimeMin, randTimeMax);
         nextRandForceX = Random.Range(randForceXMin, randForceXMax);
         nextRandForceY = Random.Range(randForceYMin, randForceYMax);
-        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        speedSpawn = manager.speedMultiplierOnSpawn;
 	}
 	
 	// Update is called once per frame
@@ -42,7 +44,7 @@ public class Spawners : MonoBehaviour {
         GameObject spawned;
         spawned = GameObject.Instantiate(toSpawn);
         spawned.transform.position = transform.position;
-        spawned.GetComponent<Rigidbody2D>().AddForce(new Vector2(nextRandForceX, nextRandForceY));
+        spawned.GetComponent<Rigidbody2D>().AddForce(new Vector2(nextRandForceX*speedSpawn, nextRandForceY*speedSpawn));
 
         elapsedTime = 0.0f;
         nextRandTime = Random.Range(randTimeMin, randTimeMax);

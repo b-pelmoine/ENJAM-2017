@@ -247,6 +247,8 @@ MonoBehaviour:
   randForceXMax: 100
   randForceYMin: -100
   randForceYMax: 100
+  sprite1: {fileID: 21300000, guid: 2498d10f4245c1048acd7eac908a7d5c, type: 3}
+  sprite2: {fileID: 21300000, guid: 3c471f1e5448f1c4486e985a16785291, type: 3}
 --- !u!198 &198923069778712708
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -257,7 +259,7 @@ ParticleSystem:
   lengthInSec: 2
   simulationSpeed: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1

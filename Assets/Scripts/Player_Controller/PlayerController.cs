@@ -10,7 +10,7 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour {
 
-    public float speed;
+    private float speed;
     //public float tilt;
     public Boundary boundary;
 
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
         _origPos = transform.position;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         health = gameManager.maxHP;
+        speed = gameManager.moveSpeed;
     }
 
     void FixedUpdate()
@@ -50,5 +51,17 @@ public class PlayerController : MonoBehaviour {
         //rig.rotation = rig.velocity.x * -tilt;
 
         _origPos = transform.position;
+    }
+
+    public void DamagePlayer(int damages)
+    {
+        health -= damages;
+        if (health <= 0) Kill();
+    }
+
+    private void Kill()
+    {
+        //play anim death etc
+        Debug.Log("Mort");
     }
 }
