@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("FlyingAsteroid"))
+        if (collision.gameObject.CompareTag("FlyingAsteroid") && !isShielding)
         {
             ContactPoint2D contact = collision.contacts[0];
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
