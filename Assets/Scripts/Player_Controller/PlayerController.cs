@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     private Vector3 _origPos;
     private Vector2 savedVelocity;
 
+    public GameObject collisionAnim;
+
     //Dash variables
     public GameObject dashAnim;
     public Transform dashAnimPos;
