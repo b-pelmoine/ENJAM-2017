@@ -10,6 +10,8 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour {
 
+    private PlayerState playerState;
+
     private float speed;
     public Boundary boundary;
     public GameObject shield;
@@ -51,8 +53,23 @@ public class PlayerController : MonoBehaviour {
         Cooldown
     }
 
+    public enum PlayerState
+    {
+        PlayerOne,
+        PlayerTwo
+    }
+
     private void Start()
     {
+        if(gameObject.name == "Player1")
+        {
+            playerState = PlayerState.PlayerOne;
+        }
+        else
+        {
+            playerState = PlayerState.PlayerTwo;
+        }
+
         rig = GetComponent<Rigidbody2D>();
         _origPos = transform.position;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -93,8 +110,19 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = 0.0f;
+        float moveVertical = 0.0f;
+        switch (playerState)
+        {
+            case PlayerState.PlayerOne:
+                moveHorizontal = Input.GetAxis("Horizontal");
+                moveVertical = Input.GetAxis("Vertical");
+                break;
+            case PlayerState.PlayerTwo:
+                moveHorizontal = Input.GetAxis("Horizontal2");
+                moveVertical = Input.GetAxis("Vertical2");
+                break;
+        }
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         if (dashing)
@@ -134,11 +162,24 @@ public class PlayerController : MonoBehaviour {
         switch (dashState)
         {
             case DashState.Ready:
-                var isDashKeyDown = Input.GetButtonDown("Dash");
-                if (isDashKeyDown)
+                switch (playerState)
                 {
-                    dashing = true;
-                    dashState = DashState.Dashing;
+                    case PlayerState.PlayerOne:
+                        var isDashOneKeyDown = Input.GetButtonDown("Dash");
+                        if (isDashOneKeyDown)
+                        {
+                            dashing = true;
+                            dashState = DashState.Dashing;
+                        }
+                        break;
+                    case PlayerState.PlayerTwo:
+                        var isDashTwoKeyDown = Input.GetButtonDown("Dash2");
+                        if (isDashTwoKeyDown)
+                        {
+                            dashing = true;
+                            dashState = DashState.Dashing;
+                        }
+                        break;
                 }
                 break;
             case DashState.Dashing:
@@ -163,20 +204,34 @@ public class PlayerController : MonoBehaviour {
 
     private void Shield()
     {
-        switch(shieldState)
+        switch (shieldState)
         {
             case ShieldState.Ready:
-                var isShieldKeyDown = Input.GetButtonDown("Shield");
-                if (isShieldKeyDown)
+                switch (playerState)
                 {
-                    isShielding = true;
-                    shieldState = ShieldState.Shielding;
-                    shield.SetActive(true);
+                    case PlayerState.PlayerOne:
+                        var isShieldOneKeyDown = Input.GetButtonDown("Shield");
+                        if (isShieldOneKeyDown)
+                        {
+                            isShielding = true;
+                            shieldState = ShieldState.Shielding;
+                            shield.SetActive(true);
+                        }
+                        break;
+                    case PlayerState.PlayerTwo:
+                        var isShieldTwoKeyDown = Input.GetButtonDown("Shield2");
+                        if (isShieldTwoKeyDown)
+                        {
+                            isShielding = true;
+                            shieldState = ShieldState.Shielding;
+                            shield.SetActive(true);
+                        }
+                        break;
                 }
                 break;
             case ShieldState.Shielding:
                 shieldTime += Time.deltaTime;
-                if(shieldTime >= shieldDuration)
+                if (shieldTime >= shieldDuration)
                 {
                     shieldTime = 0.0f;
                     isShielding = false;
