@@ -617,8 +617,8 @@ MonoBehaviour:
   percentageHealthCost: 0
   attackCooldown: 0
   damagesOnCollision: 1
-  speedMultiplierOnCollision: 1
-  speedMultiplierOnSpawn: 1
+  speedMultiplierOnCollision: 5
+  speedMultiplierOnSpawn: 5
 --- !u!4 &905364334
 Transform:
   m_ObjectHideFlags: 0
@@ -789,11 +789,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4216210667423456, guid: 91e45f3b84e0cf54385e5fb8d3ca2d75, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.9213378
+      value: 3.44
       objectReference: {fileID: 0}
     - target: {fileID: 4216210667423456, guid: 91e45f3b84e0cf54385e5fb8d3ca2d75, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.3988327
+      value: -0.27
       objectReference: {fileID: 0}
     - target: {fileID: 4216210667423456, guid: 91e45f3b84e0cf54385e5fb8d3ca2d75, type: 2}
       propertyPath: m_LocalPosition.z
@@ -850,12 +850,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toSpawn: {fileID: 1020634653269792, guid: 4045423b6078a374a88542292979c1e8, type: 2}
-  randTimeMin: 2
-  randTimeMax: 5
-  randForceXMin: -100
+  randTimeMin: 1
+  randTimeMax: 1
+  randForceXMin: 99
   randForceXMax: 100
   randForceYMin: -100
-  randForceYMax: 100
+  randForceYMax: -99
 --- !u!4 &1805150837
 Transform:
   m_ObjectHideFlags: 0
