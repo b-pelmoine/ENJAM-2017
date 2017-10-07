@@ -5,13 +5,16 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour {
 
+    //self
+    public static GameManager instance;
+
     [Header("Game Parameters")]
-    [Tooltip("rate at which the zone shrinks in units per second")]
-    public float shrinkRate;
+    public float shrinkDuration; //in seconds
     public float asteroidCircleStart; // how far do we start from the center
     public float asteroidCircleEnd; // how close from the center the cirlce ends
     public int astreoidCount;
     public int asteroidMaxCount;
+    public int beltAsteroidCount;
 
     [Header("Players")]
     public float moveSpeed;
@@ -40,6 +43,15 @@ public class GameManager : MonoBehaviour {
 
     [Header("Game manager related variables")]
     private List<GameObject> players;
+    private AreaManager areaGenerator;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
 
     void Start()
     {
@@ -58,12 +70,13 @@ public class GameManager : MonoBehaviour {
 
     void GameStart()
     {
+        EventManager.TriggerEvent("generateArea");
         //spawn players
 
         //enable splitscreen
         SplitScreen.switchState();
         EventManager.TriggerEvent("splitscreen");
         //show screen and start the game for real
-
+        EventManager.TriggerEvent("gameStart");
     }
 }
