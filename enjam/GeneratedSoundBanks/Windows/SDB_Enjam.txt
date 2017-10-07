@@ -1,0 +1,24 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3991942870	Music			\Default Work Unit\Music	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	107808849	Rec Hihat_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Hihat_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 1\Gradation2\Rec Hihat_01		1570980
+	164164669	Rec Lead_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Lead_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 2\Gradation1\Rec Lead_01		1885156
+	169275457	Rec Snare1_02	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Snare1_02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 1\Gradation4\Rec Snare1_02		1570980
+	251150095	Rec Gratte 3_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Gratte 3_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 2\Gradation3\Rec Gratte 3_01		1885156
+	322669329	Rec Gratte 2_02	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Gratte 2_02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 3\Gradation3\Rec Gratte 2_02		1885156
+	375722578	Rec Kick2_02	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Kick2_02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 1\Gradation3\Rec Kick2_02		1570980
+	410742382	Rec Gratte 2_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Gratte 2_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 2\Gradation2\Rec Gratte 2_01		1885156
+	540127474	Rec Hihat2_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Hihat2_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 1\Gradation4\Rec Hihat2_01		1570980
+	600018798	Rec Taiko_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Taiko_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 1\Gradation5\Rec Taiko_01		1570980
+	758573395	Rec Kick1_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Kick1_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 1\Gradation2\Rec Kick1_01		1570980
+	828627286	Rec Gratte 1_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Gratte 1_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 2\Gradation1\Rec Gratte 1_01		1885156
+	845844734	Rec Basse_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Basse_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 1\Gradation1\Rec Basse_01		1885156
+	858401869	Rec Lead_03	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Lead_03_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 3\Gradation1\Rec Lead_03		1898248
+	894275284	Rec Snare2_02	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Snare2_02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 1\Gradation5\Rec Snare2_02		1570980
+	932498391	Rec Gratte 1_02	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Gratte 1_02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 3\Gradation2\Rec Gratte 1_02		1885156
+	940819850	Rec Drums_03	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Drums_03_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 3\Gradation1\Rec Drums_03		1885156
+	1033301865	Rec Gratte 3_02	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Gratte 3_02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 3\Gradation1\Rec Gratte 3_02		1885156
+	1045385662	Rec Snare3_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Snare3_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 1\Gradation5\Rec Snare3_01		1570980
+	1047749547	Rec Drums_01	D:\_Data\Projets\Enjam\enjam\.cache\Windows\SFX\Rec Drums_01_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\Phases\Phase 2\Gradation1\Rec Drums_01		1885156
+

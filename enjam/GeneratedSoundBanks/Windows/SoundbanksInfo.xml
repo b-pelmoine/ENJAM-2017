@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="125">
+	<RootPaths>
+		<ProjectRoot>D:\_Data\Projets\Enjam\enjam\</ProjectRoot>
+		<SourceFilesRoot>D:\_Data\Projets\Enjam\enjam\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\_Data\Projets\Enjam\enjam\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\_Data\Projets\Enjam\enjam\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="2818865172" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\SDB_Enjam</ObjectPath>
+			<ShortName>SDB_Enjam</ShortName>
+			<Path>SDB_Enjam.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3991942870" Name="Music" ObjectPath="\Events\Default Work Unit\Music"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="107808849" Language="SFX">
+					<ShortName>Rec Hihat_01.wav</ShortName>
+					<Path>SFX\Rec Hihat_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="164164669" Language="SFX">
+					<ShortName>Rec Lead_01.wav</ShortName>
+					<Path>SFX\Rec Lead_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="169275457" Language="SFX">
+					<ShortName>Rec Snare1_02.wav</ShortName>
+					<Path>SFX\Rec Snare1_02_F17FB28C.wem</Path>
+				</File>
+				<File Id="251150095" Language="SFX">
+					<ShortName>Rec Gratte 3_01.wav</ShortName>
+					<Path>SFX\Rec Gratte 3_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="322669329" Language="SFX">
+					<ShortName>Rec Gratte 2_02.wav</ShortName>
+					<Path>SFX\Rec Gratte 2_02_F17FB28C.wem</Path>
+				</File>
+				<File Id="375722578" Language="SFX">
+					<ShortName>Rec Kick2_02.wav</ShortName>
+					<Path>SFX\Rec Kick2_02_F17FB28C.wem</Path>
+				</File>
+				<File Id="410742382" Language="SFX">
+					<ShortName>Rec Gratte 2_01.wav</ShortName>
+					<Path>SFX\Rec Gratte 2_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="540127474" Language="SFX">
+					<ShortName>Rec Hihat2_01.wav</ShortName>
+					<Path>SFX\Rec Hihat2_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="600018798" Language="SFX">
+					<ShortName>Rec Taiko_01.wav</ShortName>
+					<Path>SFX\Rec Taiko_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="758573395" Language="SFX">
+					<ShortName>Rec Kick1_01.wav</ShortName>
+					<Path>SFX\Rec Kick1_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="828627286" Language="SFX">
+					<ShortName>Rec Gratte 1_01.wav</ShortName>
+					<Path>SFX\Rec Gratte 1_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="845844734" Language="SFX">
+					<ShortName>Rec Basse_01.wav</ShortName>
+					<Path>SFX\Rec Basse_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="858401869" Language="SFX">
+					<ShortName>Rec Lead_03.wav</ShortName>
+					<Path>SFX\Rec Lead_03_F17FB28C.wem</Path>
+				</File>
+				<File Id="894275284" Language="SFX">
+					<ShortName>Rec Snare2_02.wav</ShortName>
+					<Path>SFX\Rec Snare2_02_F17FB28C.wem</Path>
+				</File>
+				<File Id="932498391" Language="SFX">
+					<ShortName>Rec Gratte 1_02.wav</ShortName>
+					<Path>SFX\Rec Gratte 1_02_F17FB28C.wem</Path>
+				</File>
+				<File Id="940819850" Language="SFX">
+					<ShortName>Rec Drums_03.wav</ShortName>
+					<Path>SFX\Rec Drums_03_F17FB28C.wem</Path>
+				</File>
+				<File Id="1033301865" Language="SFX">
+					<ShortName>Rec Gratte 3_02.wav</ShortName>
+					<Path>SFX\Rec Gratte 3_02_F17FB28C.wem</Path>
+				</File>
+				<File Id="1045385662" Language="SFX">
+					<ShortName>Rec Snare3_01.wav</ShortName>
+					<Path>SFX\Rec Snare3_01_F17FB28C.wem</Path>
+				</File>
+				<File Id="1047749547" Language="SFX">
+					<ShortName>Rec Drums_01.wav</ShortName>
+					<Path>SFX\Rec Drums_01_F17FB28C.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

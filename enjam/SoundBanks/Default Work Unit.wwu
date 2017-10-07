@@ -4,7 +4,9 @@
 		<WorkUnit Name="Default Work Unit" ID="{85545BF2-7E08-40C4-B528-202355F114F7}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="SDB_Enjam" ID="{0F452D3B-6FF7-4E46-8EC7-F583FD171AE0}">
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="Default Work Unit" ID="{E49EB66C-C04F-4116-9337-84D9B66A7BE6}" WorkUnitID="{E49EB66C-C04F-4116-9337-84D9B66A7BE6}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
