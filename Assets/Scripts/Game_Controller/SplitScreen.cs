@@ -55,5 +55,9 @@ public class SplitScreen : MonoBehaviour {
     void triggerState()
     {
         m_Cam.enabled = splitEnabled;
+        if(!splitEnabled)
+        {
+            //cry in a corner
+        }
     }
 }

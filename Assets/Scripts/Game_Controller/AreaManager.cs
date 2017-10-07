@@ -135,6 +135,8 @@ public class AreaManager : MonoBehaviour {
             if(Time.time - startTime > shrinkDuration)
             {
                 shrinking = false;
+                SplitScreen.switchState();
+                EventManager.TriggerEvent("splitscreen");
             }
         }
         beltRootlvl1.transform.rotation = r2;
