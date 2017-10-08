@@ -35,8 +35,10 @@ public class LaserController : MonoBehaviour {
     public void Fire()
     {
         PlayerController p = GetComponentInParent<PlayerController>();
+        Debug.Log(p.health);
+        Debug.Log(p.GetHealth());
         //Faire cas speed
-        if(speed == 0)
+        if (speed == 0)
         {
             laserObject.transform.localScale = new Vector3(maxLenght, (maxWidth - minWidth) * p.GetHealth() + minWidth, 1);
             laserObject.SetActive(true);
@@ -47,19 +49,12 @@ public class LaserController : MonoBehaviour {
             laserObject.SetActive(true);
         }
         p.DamagePlayer((int)(p.health * percentageHealthCost / 100.0f));
+        Debug.Log(p.health);
+        Debug.Log(p.GetHealth());
     }
 
     public void Stop()
     {
         laserObject.SetActive(false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player") && !touched)
-        {
-            collision.gameObject.GetComponent<PlayerController>().DamagePlayer(laserDamages);
-            touched = true;
-        }
     }
 }

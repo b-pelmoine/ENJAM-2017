@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour {
 
     public float GetHealth()
     {
-        return health / gameManager.maxHP;
+        return (float)health / gameManager.maxHP;
     }
 
     public void DamagePlayer(int damages)
@@ -410,4 +410,12 @@ public class PlayerController : MonoBehaviour {
             boom.GetComponent<Animator>().SetTrigger("StartHit*");
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Laser"))
+        {
+            DamagePlayer(gameManager.damagesToEnnemy);
+        }
+    }
+
 }

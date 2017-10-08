@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FlyingAsteroid
   - Arms
+  - Laser
   layers:
   - Default
   - TransparentFX
