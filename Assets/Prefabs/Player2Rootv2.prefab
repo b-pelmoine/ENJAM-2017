@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1158958812128008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec288fe7363b3f40ade4e1ded66c01c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6776c13a1c1b2d742ac934f1fc78d26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   laserObject: {fileID: 1675319534052164}
@@ -4656,7 +4656,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -713632560
+  randomSeed: 1851097177
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7936,7 +7936,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: bff59302ab541e6488e10bff08afc87f, type: 2}
+  - {fileID: 2100000, guid: 756f285a8b53df94da0aec7509276646, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
