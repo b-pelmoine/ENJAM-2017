@@ -32,11 +32,16 @@ public class GameManager : MonoBehaviour {
     public float shieldDuration;
 
     [Header("Attack")]
+    public float laserDuration;
     public float maxWidth;
+    public float minWidth;
     public float maxLenght;
+    [Tooltip("0 means instant laser")]
+    public float laserSpeed;
     public int damagesToEnnemy;
     public float percentageHealthCost;
     public float attackCooldown;
+    public float chargeTime;
 
     [Header("Asteroids")]
     public int damagesOnCollision;

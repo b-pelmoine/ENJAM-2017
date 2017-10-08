@@ -12,6 +12,7 @@ public class AsteroidBehaviour : MonoBehaviour {
     public float randForceYMax = 300.0f;
     public Sprite sprite1;
     public Sprite sprite2;
+    public GameObject collisionParticles;
 
     private float timeCounter = 0.0f;
     private int state = 1;
@@ -63,6 +64,10 @@ public class AsteroidBehaviour : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("FlyingAsteroid") && timeCounter > spawnTime)
         {
+            GameObject cp = GameObject.Instantiate(collisionParticles);
+            cp.transform.position = transform.position;
+            cp.transform.localScale = cp.transform.localScale * 1 / state;
+            Destroy(cp, cp.GetComponent<ParticleSystem>().main.duration + 0.5f);
             if(state < 3)
             {
                 if (manager.astreoidCount < manager.asteroidMaxCount)
