@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour {
     [Header("Players")]
     public float moveSpeed;
     public int maxHP;
-    public Color colorJ1;
-    public Color colorJ2;
 
     [Header("Dash")]
     public float dashDistance;
