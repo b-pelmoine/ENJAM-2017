@@ -606,8 +606,6 @@ MonoBehaviour:
   beltAsteroidCount: 0
   moveSpeed: 10
   maxHP: 100
-  colorJ1: {r: 0, g: 0, b: 0, a: 0}
-  colorJ2: {r: 0, g: 0, b: 0, a: 0}
   dashDistance: 0.5
   dashSpeed: 3
   dashCooldown: 1.5
