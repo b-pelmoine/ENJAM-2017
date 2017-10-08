@@ -438,6 +438,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114540492018668158, guid: 747016bcef0b4554b9cee4a1b941bb22,
+        type: 2}
+      propertyPath: boundary.xMin
+      value: -1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114540492018668158, guid: 747016bcef0b4554b9cee4a1b941bb22,
+        type: 2}
+      propertyPath: boundary.xMax
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114540492018668158, guid: 747016bcef0b4554b9cee4a1b941bb22,
+        type: 2}
+      propertyPath: boundary.yMin
+      value: -1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114540492018668158, guid: 747016bcef0b4554b9cee4a1b941bb22,
+        type: 2}
+      propertyPath: boundary.yMax
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 747016bcef0b4554b9cee4a1b941bb22, type: 2}
   m_IsPrefabParent: 0
@@ -563,6 +583,61 @@ Prefab:
     - target: {fileID: 4865923275111806, guid: b9f79044046fa064ebff8b3b373bdabf, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: dashDistance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: dashSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: shieldDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: maxWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: maxLenght
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: damagesToEnnemy
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: percentageHealthCost
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: dashCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757860489086474, guid: b9f79044046fa064ebff8b3b373bdabf,
+        type: 2}
+      propertyPath: distanceFromPlayer
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9f79044046fa064ebff8b3b373bdabf, type: 2}
