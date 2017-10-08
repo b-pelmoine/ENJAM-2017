@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4792523092965490}
   m_Layer: 8
-  m_Name: Player2
+  m_Name: Player2Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
