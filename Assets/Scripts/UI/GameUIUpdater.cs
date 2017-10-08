@@ -37,7 +37,7 @@ public class GameUIUpdater : MonoBehaviour {
             {
                 //set health & change status etc
                 //J1
-                float ratio = players[0].GetHealth();
+                float ratio = players[1].GetHealth();
                 lifeBarJ1.fillAmount = ratio;
                 vieJ1.text = ((int)100 * ratio).ToString() + "%";
                 if (!DangerstatusJ1.activeInHierarchy)
@@ -51,7 +51,7 @@ public class GameUIUpdater : MonoBehaviour {
                         DangerstatusJ1.SetActive(false);
                 }
                 //J2
-                ratio = players[1].GetHealth();
+                ratio = players[0].GetHealth();
                 lifeBarJ2.fillAmount = ratio;
                 vieJ2.text = ((int)100 * ratio).ToString() + "%";
                 if (!DangerstatusJ2.activeInHierarchy)

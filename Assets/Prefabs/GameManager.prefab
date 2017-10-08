@@ -70,18 +70,23 @@ MonoBehaviour:
   astreoidCount: 0
   asteroidMaxCount: 0
   beltAsteroidCount: 200
-  moveSpeed: 0
-  maxHP: 0
-  dashDistance: 0
-  dashSpeed: 0
-  dashCooldown: 1
+  moveSpeed: 10
+  maxHP: 100
+  distanceFromPlayer: 20
+  dashDistance: 0.5
+  dashSpeed: 3
+  dashCooldown: 1.5
   shieldCooldown: 1
-  shieldDuration: 0
-  maxWidth: 0
-  maxLenght: 0
-  damagesToEnnemy: 0
-  percentageHealthCost: 0
-  attackCooldown: 1
+  shieldDuration: 2
+  laserDuration: 2
+  maxWidth: 5
+  minWidth: 1
+  maxLenght: 500
+  laserSpeed: 0
+  damagesToEnnemy: 50
+  percentageHealthCost: 75
+  attackCooldown: 2
+  chargeTime: 0.5
   damagesOnCollision: 0
   speedMultiplierOnCollision: 0
   speedMultiplierOnSpawn: 0
@@ -139,7 +144,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 6
     m_NumAlphaKeys: 2
-  shrinking: 0
+  shrinking: 1
   beltSpeed1: 3
   beltSpeed2: 8
   beltSpeed3: 12

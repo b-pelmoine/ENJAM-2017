@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 92534191276464496}
   - component: {fileID: 124824322551726848}
   - component: {fileID: 114418496993065206}
+  - component: {fileID: 114290748453014874}
+  - component: {fileID: 114138367503638730}
   m_Layer: 0
   m_Name: Camera-RIGHT
   m_TagString: MainCamera
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260490144106978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.99, y: -6.58, z: -10}
+  m_LocalPosition: {x: 5.4160013, y: -0.23599985, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,15 +51,15 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260490144106978}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.5
     y: 0
-    width: 1
+    width: 0.5
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -86,6 +88,39 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260490144106978}
   m_Enabled: 1
+--- !u!114 &114138367503638730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260490144106978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28514837aa1b7934489419ab2faa1590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_listeners:
+    initialListenerList: []
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &114290748453014874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260490144106978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fbcab6eec868143a12e110faa8467a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
 --- !u!114 &114418496993065206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742f7b7992f25854a8a37a37b1a5f61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cam: {fileID: 0}
+  m_Cam: {fileID: 20209111093554638}
   m_pos: 1
 --- !u!124 &124824322551726848
 Behaviour:
