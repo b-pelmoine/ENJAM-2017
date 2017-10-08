@@ -16,9 +16,10 @@ public class PlayerController : MonoBehaviour {
     public Boundary boundary;
     public GameObject shield;
     public ParticleSystem dashParticles;
+    public GameObject tail;
 
     private GameManager gameManager;
-    private int health;
+    public int health;
     private Rigidbody2D rig;
     private Vector3 _origPos;
     private Vector2 savedVelocity;
@@ -44,6 +45,27 @@ public class PlayerController : MonoBehaviour {
     private float shieldCooldown;
     private float shieldCD;
     private bool isShielding;
+
+    //Laser variables
+    public GameObject chargeAnim;
+    public Transform chargeAnimPos;
+    public LaserController laser;
+    private LaserState laserState;
+    private float laserDuration;
+    private float laserTime;
+    private float laserCooldown;
+    private float laserCD;
+    private bool isFiring;
+    private float chargeTime;
+    private float chargeCD;
+
+    public enum LaserState
+    {
+        Ready,
+        Charging,
+        Firing,
+        Cooldown
+    }
 
     public enum DashState
     {
@@ -97,21 +119,33 @@ public class PlayerController : MonoBehaviour {
         shieldTime = 0.0f;
         isShielding = false;
 
+        laserState = LaserState.Ready;
+        laserDuration = gameManager.laserDuration;
+        laserTime = 0.0f;
+        laserCooldown = gameManager.attackCooldown;
+        laserCD = laserCooldown;
+        isFiring = false;
+        chargeTime = gameManager.chargeTime;
+        chargeCD = chargeTime;
     }
 
     private void Update()
     {
-        Dash();
-        Shield();
-
-        Vector3 moveDirection = gameObject.transform.position - _origPos;
-        if (moveDirection != Vector3.zero)
+        UltraLaser();
+        if (!isFiring)
         {
-            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
+            Dash();
+            Shield();
 
-        _origPos = transform.position;
+            Vector3 moveDirection = gameObject.transform.position - _origPos;
+            if (moveDirection != Vector3.zero)
+            {
+                float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+
+            _origPos = transform.position;
+        }
     }
 
     void FixedUpdate()
@@ -129,22 +163,24 @@ public class PlayerController : MonoBehaviour {
                 moveVertical = Input.GetAxis("Vertical2");
                 break;
         }
-
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        if (dashing)
+        if (!isFiring)
         {
-            rig.velocity = movement * speed * dashSpeed;
-        }
-        else
-        {
-            rig.velocity = movement * speed;
-        }
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            if (dashing)
+            {
+                rig.velocity = movement * speed * dashSpeed;
+            }
+            else
+            {
+                rig.velocity = movement * speed;
+            }
 
-        rig.position = new Vector2
-        (
-            Mathf.Clamp(rig.position.x, boundary.xMin, boundary.xMax),
-            Mathf.Clamp(rig.position.y, boundary.yMin, boundary.yMax)
-        );
+            rig.position = new Vector2
+            (
+                Mathf.Clamp(rig.position.x, boundary.xMin, boundary.xMax),
+                Mathf.Clamp(rig.position.y, boundary.yMin, boundary.yMax)
+            );
+        }
 
     }
 
@@ -181,7 +217,7 @@ public class PlayerController : MonoBehaviour {
                         {
                             dashing = true;
                             dashState = DashState.Dashing;
-                            //dashParticles.Play();
+                            dashParticles.Play();
                             GameObject dashInstance = GameObject.Instantiate(dashAnim);
                             dashInstance.transform.position = dashAnimPos.position;
                             dashInstance.transform.rotation = transform.rotation;
@@ -195,7 +231,7 @@ public class PlayerController : MonoBehaviour {
                         {
                             dashing = true;
                             dashState = DashState.Dashing;
-                            //dashParticles.Play();
+                            dashParticles.Play();
                             GameObject dashInstance = GameObject.Instantiate(dashAnim);
                             dashInstance.transform.position = dashAnimPos.position;
                             dashInstance.transform.rotation = transform.rotation;
@@ -273,6 +309,89 @@ public class PlayerController : MonoBehaviour {
                 {
                     shieldCD = shieldCooldown;
                     shieldState = ShieldState.Ready;
+                }
+                break;
+        }
+    }
+
+    private void UltraLaser()
+    {
+        switch (laserState)
+        {
+            case LaserState.Ready:
+                switch (playerState)
+                {
+                    case PlayerState.PlayerOne:
+                        var isLaserOneKeyDown = Input.GetButtonDown("Laser");
+                        if (isLaserOneKeyDown)
+                        {
+                            isFiring = true;
+                            rig.simulated = false;
+                            Rigidbody2D[] rigs = tail.GetComponentsInChildren<Rigidbody2D>();
+                            foreach(Rigidbody2D r in rigs)
+                            {
+                                r.simulated = false;
+                            }
+                            laserState = LaserState.Charging;
+                            EventManager.TriggerEvent("AttackJ1");
+                            GameObject charge = GameObject.Instantiate(chargeAnim);
+                            charge.transform.position = chargeAnimPos.position;
+                            charge.transform.rotation = transform.rotation;
+                            charge.GetComponent<Animator>().SetTrigger("Start");
+                        }
+                        break;
+                    case PlayerState.PlayerTwo:
+                        var isLaserTwoKeyDown = Input.GetButtonDown("Laser2");
+                        if (isLaserTwoKeyDown)
+                        {
+                            isFiring = true;
+                            rig.simulated = false;
+                            Rigidbody2D[] rigs = tail.GetComponentsInChildren<Rigidbody2D>();
+                            foreach (Rigidbody2D r in rigs)
+                            {
+                                r.simulated = false;
+                            }
+                            laserState = LaserState.Charging;
+                            EventManager.TriggerEvent("AttackJ2");
+                            GameObject charge = GameObject.Instantiate(chargeAnim);
+                            charge.transform.position = chargeAnimPos.position;
+                            charge.transform.rotation = transform.rotation;
+                            charge.GetComponent<Animator>().SetTrigger("Start");
+                        }
+                        break;
+                }
+                break;
+            case LaserState.Charging:
+                chargeCD -= Time.deltaTime;
+                if(chargeCD <= 0.0f)
+                {
+                    chargeCD = chargeTime;
+                    laserState = LaserState.Firing;
+                    laser.Fire();
+                }
+                break;
+            case LaserState.Firing:
+                laserTime += Time.deltaTime;
+                if(laserTime >= laserDuration)
+                {
+                    Rigidbody2D[] rigs = tail.GetComponentsInChildren<Rigidbody2D>();
+                    foreach (Rigidbody2D r in rigs)
+                    {
+                        r.simulated = true;
+                    }
+                    rig.simulated = true;
+                    laserTime = 0.0f;
+                    laserState = LaserState.Cooldown;
+                    isFiring = false;
+                    laser.Stop();
+                }
+                break;
+            case LaserState.Cooldown:
+                laserCD -= Time.deltaTime;
+                if(laserCD <= 0.0f)
+                {
+                    laserCD = laserCooldown;
+                    laserState = LaserState.Ready;
                 }
                 break;
         }
