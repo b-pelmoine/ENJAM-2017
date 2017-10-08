@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour {
     public float circleDuration = 1.5f;
 
     [Header("Game manager related variables")]
-    public List<GameObject> players;
+    public PlayerController[] players;
     public List<GameObject> ShowPlayers;
     private AreaManager areaGenerator;
 
@@ -76,6 +76,12 @@ public class GameManager : MonoBehaviour {
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        players = FindObjectsOfType<PlayerController>();
+        foreach(PlayerController c in players)
+        {
+            c.enabled = false;
+        }
     }
 
     void OnEnable()
@@ -100,11 +106,16 @@ public class GameManager : MonoBehaviour {
         EventManager.TriggerEvent("splitscreen");
         //show screen and start the game for real
         EventManager.TriggerEvent("gameStart");
+        foreach (PlayerController c in players)
+        {
+            c.enabled = true;
+        }
     }
+
 
     void OnShrinkEnded()
     {
-        for(int i=0; i<players.Count; ++i)
+        for(int i=0; i<players.Length; ++i)
         {
             GameObject go = Instantiate(ShowPlayers[i]);
             go.transform.localScale = Vector3.one * 20;
